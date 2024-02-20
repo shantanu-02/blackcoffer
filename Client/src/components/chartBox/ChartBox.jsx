@@ -34,15 +34,6 @@ const ChartBox = (props) => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-        <div className="texts">
-          <span
-            className="percentage"
-            style={{ color: props.percentage < 0 ? "tomato" : "limegreen" }}
-          >
-            {props.percentage}%
-          </span>
-          <span className="duration">this month</span>
-        </div>
       </div>
     </div>
   );

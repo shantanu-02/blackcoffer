@@ -1,7 +1,7 @@
 @import "../../styles/responsive.scss";
 
 .pieChartBox {
-  height: 100%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,6 +40,32 @@
         align-items: center;
 
         .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .options2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 14px;
+
+    .option2 {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+
+      .title2 {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .dot2 {
           width: 10px;
           height: 10px;
           border-radius: 50%;
