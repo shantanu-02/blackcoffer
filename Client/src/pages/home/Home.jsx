@@ -1,18 +1,17 @@
 import "./home.scss";
 import TopBox from "../../components/topbox/Topbox";
+import ChartBox1 from "../../components/chartBox/ChartBox1";
+import ChartBox2 from "../../components/chartBox/ChartBox2";
+import ChartBox3 from "../../components/chartBox/ChartBox3";
 import ChartBox from "../../components/chartBox/ChartBox";
 import {
   barChartBoxRevenue,
   barChartBoxVisit,
-  chartBoxConversion,
-  chartBoxProduct,
-  chartBoxRevenue,
-  chartBoxUser,
+  chartBoxConversion
 } from "../../data";
 import BarChartBox from "../../components/barchartbox/BarChartBox";
 import PieChartBox from "../../components/pieChartBox/PieChartBox";
-import BigChartBox from "../../components/bigChartBox/bigChartBox";
-
+import BigChartBox from "../../components/bigChartBox/BigChartBox";
 
 const Home = () => {
   return (
@@ -21,10 +20,10 @@ const Home = () => {
         <TopBox />
       </div>
       <div className="box box2">
-        <ChartBox {...chartBoxUser} />
+        <ChartBox1 />
       </div>
       <div className="box box3">
-        <ChartBox {...chartBoxProduct} />
+        <ChartBox2 />
       </div>
       <div className="box box4">
         <PieChartBox />
@@ -33,7 +32,7 @@ const Home = () => {
         <ChartBox {...chartBoxConversion} />
       </div>
       <div className="box box6">
-        <ChartBox {...chartBoxRevenue} />
+        <ChartBox3/>
       </div>
       <div className="box box7">
         <BigChartBox />

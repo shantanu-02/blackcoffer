@@ -26,9 +26,9 @@ const BigChartBox = () => {
 
   const fetchData = async () => {
     try {
-      let url = "/years";
-      const params = {};
-      const response = await axios.get(url, { params });
+      // let url = "/years";
+      // const params = {};
+      const response = await axios.get("http://localhost:8000/years");
 
       let filteredData = response.data;
 

@@ -5,10 +5,13 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+app.use(express.json());
+app.use(cors());
+
 app.get("/intensity", cors(), async (req, res) => {
   try {
     const collection = await getCollection("assignment");
-    const documents = await collection.find({}, { intensity: 1 }).toArray();
+    const documents = await collection.find({}, { projection: { intensity: 1} }).toArray();
     const extractedField = documents.map((doc) => doc.intensity);
 
     res.json(documents);
@@ -21,10 +24,10 @@ app.get("/intensity", cors(), async (req, res) => {
 app.get("/likelihood", cors(), async (req, res) => {
   try {
     const collection = await getCollection("assignment");
-    const documents = await collection.find({}, { likelihood: 1 }).toArray();
+    const documents = await collection.find({}, { projection: { likelihood: 1 } }).toArray();
     const extractedField = documents.map((doc) => doc.likelihood);
 
-    res.json(extractedField);
+    res.json(documents);
   } catch (error) {
     console.error("Error occurred:", error);
     res.status(500).send("Internal Server Error");
@@ -34,21 +37,26 @@ app.get("/likelihood", cors(), async (req, res) => {
 app.get("/relevance", cors(), async (req, res) => {
   try {
     const collection = await getCollection("assignment");
-    const documents = await collection.find({}, { relevance: 1 }).toArray();
+    const documents = await collection.find({}, { projection: { relevance: 1 } }).toArray();
     const extractedField = documents.map((doc) => doc.relevance);
 
-    res.json(extractedField);
+    res.json(documents);
   } catch (error) {
     console.error("Error occurred:", error);
     res.status(500).send("Internal Server Error");
   }
 });
 
-app.get("/topic", cors(), async (req, res) => {
+app.get("/publishers", cors(), async (req, res) => {
   try {
     const collection = await getCollection("assignment");
-    const documents = await collection.find({}, { topic: 1 }).toArray();
-    const extractedField = documents.map((doc) => doc.topic);
+    const documents = await collection.find({}, {"sector": 1, "topic": 1, "insight": 1, "published": 1}).toArray();
+    const extractedField = documents.map((doc) => ({
+      sector: doc.sector,
+      topic: doc.topic,
+      insight: doc.insight,
+      published: doc.published
+  }));
 
     res.json(extractedField);
   } catch (error) {
@@ -60,7 +68,7 @@ app.get("/topic", cors(), async (req, res) => {
 app.get("/country", cors(), async (req, res) => {
   try {
     const collection = await getCollection("assignment");
-    const documents = await collection.find({}, { country: 1 }).toArray();
+    const documents = await collection.find({}, { projection: { country: 1 } }).toArray();
     const extractedField = documents.map((doc) => doc.country);
 
     res.json(extractedField);
@@ -113,7 +121,7 @@ app.get("/region/africa", cors(), async (req, res) => {
 app.get("/sector", cors(), async (req, res) => {
   try {
     const collection = await getCollection("assignment");
-    const documents = await collection.find({}, { sector: 1 }).toArray();
+    const documents = await collection.find({}, { projection: { sector: 1 } }).toArray();
     const extractedField = documents.map((doc) => doc.sector);
 
     res.json(extractedField);
@@ -135,5 +143,9 @@ app.get("/years", cors(), async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running`);
+  console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = {
+  PORT
+}
