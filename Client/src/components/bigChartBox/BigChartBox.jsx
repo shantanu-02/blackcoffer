@@ -28,7 +28,7 @@ const BigChartBox = () => {
     try {
       // let url = "/years";
       // const params = {};
-      const response = await axios.get("http://localhost:8000/years");
+      const response = await axios.get("https://blackcoffer-udso.onrender.com/years");
 
       let filteredData = response.data;
 

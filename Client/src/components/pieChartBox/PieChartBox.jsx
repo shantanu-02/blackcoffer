@@ -11,17 +11,17 @@ const PieChartBox = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resAsia = await axios.get("http://localhost:8000/region/asia");
+        const resAsia = await axios.get("https://blackcoffer-udso.onrender.com/region/asia");
         const resAmerica = await axios.get(
-          "http://localhost:8000/region/america"
+          "https://blackcoffer-udso.onrender.com/region/america"
         );
         const resAfrica = await axios.get(
-          "http://localhost:8000/region/africa"
+          "https://blackcoffer-udso.onrender.com/region/africa"
         );
         const resEurope = await axios.get(
-          "http://localhost:8000/region/europe"
+          "https://blackcoffer-udso.onrender.com/region/europe"
         );
-        const resWorld = await axios.get("http://localhost:8000/region/world");
+        const resWorld = await axios.get("https://blackcoffer-udso.onrender.com/region/world");
 
         const asiaCount = resAsia.data.length;
         const americaCount = resAmerica.data.length;

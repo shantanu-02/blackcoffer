@@ -13,7 +13,7 @@ const ChartBox = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/intensity");
+      const response = await axios.get("https://blackcoffer-udso.onrender.com/intensity");
 
       let filteredData = response.data;
 
